@@ -19,23 +19,33 @@ class Records extends Tierion
 		parent::__construct($config);
 	}
 
-	public function create()
+	/**
+	 * Create new Record
+	 * 
+	 **/
+	public function create($data = [])
 	{
-		
+		//do request
+		try {
+
+			$response = $this->tierion->post($this->endpoint,[
+												'body' => json_encode($data)
+											]);
+			return json_decode($response->getBody()->getContents());
+		} catch(\GuzzleHttp\Exception\ClientException $e) {
+			return json_decode($e->getResponse()->getBody()->getContents());
+		}
 	}
 
 	/**
-	 * Delete Records
-	 *
-	 * @param  		id     string
+	 * Delete Record on Datastore
+	 * @param 	$id    String
 	 **/
 	public function delete($id)
 	{
-		$this->endpoint = '/'.$this->base_endpoint.'/'.$id;
-
 		//do request
 		try {
-			$this->tierion->delete($this->endpoint);
+			$this->tierion->delete($this->endpoint."/$id");
 
 			return true;
 		} catch(\GuzzleHttp\Exception\ClientException $e) {

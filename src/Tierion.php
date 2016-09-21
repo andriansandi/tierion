@@ -21,7 +21,7 @@ class Tierion
 
 	public function __construct($config = [])
 	{
-		$this->base_endpoint = $this->api_version.'/'.strtolower(class_basename($this));
+		$this->endpoint = $this->api_version.'/'.strtolower(class_basename($this));
 		$this->tierion = new Client([
             'base_uri' => $this->base_uri,
             // 'cert' => __DIR__ . '/../cacert.pem',
