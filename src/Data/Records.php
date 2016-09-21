@@ -14,9 +14,9 @@ use Tierion\Tierion;
 
 class Records extends Tierion 
 {
-	public function __construct()
+	public function __construct($username, $api_key)
 	{
-		parent::__construct();
+		parent::__construct($username, $api_key);
 	}
 
 	public function create()
@@ -37,7 +37,7 @@ class Records extends Tierion
 		try {
 			$this->tierion->delete($this->endpoint);
 		} catch(\GuzzleHttp\Exception\ClientException $e) {
-			return $e->getResponse()->getStatusCode();
+			return json_decode($e->getResponse()->getBody()->getContents());
 		}
 		
 		// return json_decode($this->tierion->getBody());

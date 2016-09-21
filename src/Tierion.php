@@ -19,7 +19,7 @@ class Tierion
 	public $endpoint = '/';
 	public $tierion;
 
-	public function __construct()
+	public function __construct($username, $api_key)
 	{
 		$this->base_endpoint = $this->api_version.'/'.strtolower(class_basename($this));
 		$this->tierion = new Client([
@@ -28,8 +28,8 @@ class Tierion
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'X-Username' => "elliot.gembel@gmail.com",
-                'X-Api-Key' => "kLFUTJ9DTSfjUCylAPb8AYVUvGdKoiCND/IQpcQoQNg="
+                'X-Username' => $username,
+                'X-Api-Key' => $api_key
             ]
         ]);
 	}
