@@ -1,0 +1,22 @@
+{
+    "name": "andriansandi/tierion",
+    "description": "PHP Wrapper for Tierion API",
+    "keywords": [
+        "tierion"
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "authors": [
+        {
+            "name": "Sandi Andrian",
+            "email": "andrian.sandi@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Tierion\\": "src/Tierion/"
+        }
+    }
+}
